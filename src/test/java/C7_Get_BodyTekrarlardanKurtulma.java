@@ -1,6 +1,9 @@
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 public class C7_Get_BodyTekrarlardanKurtulma {
      /*
 https://restful-booker.herokuapp.com/booking/10 url'ine bir GET request
@@ -18,8 +21,21 @@ https://restful-booker.herokuapp.com/booking/10 url'ine bir GET request
 
         String url="https://restful-booker.herokuapp.com/booking/10";
 
+        Response response=given().when().get(url);
 
-
+        response.then().assertThat().statusCode(200).contentType("application/json")
+                .body("firstname", equalTo("Eric"),"lastname",equalTo("Wilson"),
+                        "totalprice",equalTo(866),"depositpaid",equalTo(true),
+                        "additionalneeds",equalTo("Breakfast"));
+        System.out.println(response.contentType());
 
     }
+
+
+
+
+
+
+
 }
+

@@ -15,7 +15,7 @@ public class C3_JsonObjesiOlusturma {
 
         JSONObject jsonData=new JSONObject();
 
-        jsonData.put("Title","Ahmet");
+        jsonData.put("title","Ahmet");
         jsonData.put("body","Merhaba");
         jsonData.put("userId",1);
 
