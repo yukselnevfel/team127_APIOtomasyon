@@ -12,7 +12,7 @@ https://jsonplaceholder.typicode.com/posts url'ine asagidaki body ile bir POST r
         {
         "title":"API",
         "body":"API ogrenmek ne guzel",
-        "userId":10,
+        "userId":10
         }
         donen Response'un,
         status code'unun 201,
@@ -24,7 +24,7 @@ https://jsonplaceholder.typicode.com/posts url'ine asagidaki body ile bir POST r
  */
 @Test
     public void postResponseBodyTesti(){
-
+//1--endpoint ve request body hazirla.
     String url="https://jsonplaceholder.typicode.com/posts";
 
     JSONObject reqBody=new JSONObject();
@@ -32,13 +32,17 @@ https://jsonplaceholder.typicode.com/posts url'ine asagidaki body ile bir POST r
     reqBody.put("body","API ogrenmek ne guzel");
     reqBody.put("userId",10);
 
-    //----------------------------------------
+    //2--Expected data olustur
+
+
+    //3--Request gönderip dönen response 'ı kaydet.
 
     Response response=given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);
-
+    //4--Assertion islemini yap
     response.then().assertThat()
             .statusCode(201)
             .contentType("application/json")
+           // .contentType(ContentType.JSON) böyle de kullanılabilir!
             .body("title",equalTo("API"))
             .body("userId",lessThan(100))
             .body("body",containsString("API"));

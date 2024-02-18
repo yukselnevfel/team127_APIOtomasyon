@@ -1,3 +1,4 @@
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,7 @@ public class C5_Get_ResponseBodyTesti {
             response.then().assertThat()
                     .statusCode(200)
                     .contentType("application/json; charset=utf-8")
+                   // .contentType(ContentType.JSON)
                     .body("userId", equalTo(5))
                     .body("title",equalTo("optio dolor molestias sit"));
 
