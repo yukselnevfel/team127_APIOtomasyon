@@ -24,7 +24,10 @@ https://restful-booker.herokuapp.com/booking/10 url'ine bir GET request
     // 3request gönderip dönen response 'ı kaydet
         Response response=given().when().get( url);
     // 4 Assertion
-        response.then().assertThat().statusCode(200).contentType("application/json")
+        response.then()
+                .assertThat()
+                .statusCode(200)
+                .contentType("application/json")
                 .body("firstname", equalTo("Eric"),"lastname",equalTo("Wilson"),
                         "totalprice",equalTo(866),"depositpaid",equalTo(true),
                         "additionalneeds",equalTo("Breakfast"));

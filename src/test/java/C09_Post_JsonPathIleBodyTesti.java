@@ -39,6 +39,7 @@ https://restful-booker.herokuapp.com/booking url'ine asagidaki body'ye sahip
  */
     @Test
     public void JsonPathIleBodyTesti(){
+        // end point ve request body oluşturulur.
         String url="https://restful-booker.herokuapp.com/booking";
         JSONObject dates=new JSONObject();
         dates.put( "checkin" , "2021-06-01");
@@ -51,11 +52,16 @@ https://restful-booker.herokuapp.com/booking url'ine asagidaki body'ye sahip
         reqBody.put("depositpaid",false);
         reqBody.put("bookingdates",dates);
         reqBody.put("additionalneeds", "wi-fi");
+        // Expected data hazırlama
 
+        // Request gönderip dönen response'ı kaydetme
         Response response=given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);
+        response.prettyPrint();
 
+        // Assert işlemi
         response.then().assertThat()
-                .statusCode(200).contentType("application/json")
+                .statusCode(200)
+                .contentType("application/json")
                 .body("booking.firstname", equalTo("Ahmet"),
                         "booking.lastname", equalTo("Bulut"),
                         "booking.totalprice", equalTo(500),
@@ -63,6 +69,8 @@ https://restful-booker.herokuapp.com/booking url'ine asagidaki body'ye sahip
                         "booking.bookingdates.checkin", equalTo("2021-06-01"),
                         "booking.bookingdates.checkout", equalTo("2021-06-10"),
                         "booking.additionalneeds",equalTo("wi-fi"));
+
+
 
     }
 

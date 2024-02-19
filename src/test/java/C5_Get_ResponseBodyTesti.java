@@ -31,10 +31,12 @@ public class C5_Get_ResponseBodyTesti {
             // 3-Actual Data kaydedilir
 
             Response response=given().when().get(url);
+            response.prettyPrint();
 
             //response.prettyPrint();
 
             //4-Assertion İşlemi
+
             response.then().assertThat()
                     .statusCode(200)
                     .contentType("application/json; charset=utf-8")
