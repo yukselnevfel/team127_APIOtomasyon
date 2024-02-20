@@ -1,5 +1,8 @@
+package tests;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
@@ -11,7 +14,7 @@ public class Deneme {
     @Test
     public void test01(){
                /*
-C1_Get_ApiSorgulama
+tests.C1_Get_ApiSorgulama
 https://restful-booker.herokuapp.com/booking/10 url'ine bir GET request
 gonderdigimizde donen Response'un,
 status code'unun 200,
@@ -20,6 +23,22 @@ Server isimli Header'in degerinin Cowboy,
 ve status Line'in HTTP/1.1 200 OK
 ve response suresinin 5 sn'den kisa oldugunu manuel olarak test ediniz.
  */
+         //1 end point ve request  body oluşturma
+        String url="https://restful-booker.herokuapp.com/booking/10";
+
+        // 2 Expected data hazırlama
+
+        //3  Request gönderip response'ı kaydeder
+        Response response=given().when().get(url);
+       //response.prettyPrint();
+        //Asssert
+
+        response.then().assertThat()
+                .statusCode(200)
+                .contentType("application/json; charset=utf-8")
+                .header("Server","Cowboy")
+                .statusLine("HTTP/1.1 200 OK");
+
 
 
     }
@@ -34,6 +53,8 @@ ve response suresinin 5 sn'den kisa oldugunu manuel olarak test ediniz.
     Server isimli Header'in degerinin Cowboy,
     ve status Line'in HTTP/1.1 200 OK olduğunu assert ediniz.
  */
+
+
     }
 
     @Test
@@ -53,6 +74,19 @@ ve response suresinin 5 sn'den kisa oldugunu manuel olarak test ediniz.
 "lastname":"Brown"
 }
 */
+        JSONObject innerJson=new JSONObject();
+        innerJson.put("checkin","2018-01-01");
+        innerJson.put("checkout","2019-01-01");
+
+        JSONObject outerJson =new JSONObject();
+        outerJson.put("firstname","Jim");
+        outerJson.put("additionalneeds","Breakfast");
+        outerJson.put("bookingdates",innerJson);
+        outerJson.put("totalprice",111);
+        outerJson.put("depositpaid",true);
+        outerJson.put("lastname","Brown");
+
+        System.out.println(outerJson);
 
     }
     @Test
@@ -72,6 +106,29 @@ ve response suresinin 5 sn'den kisa oldugunu manuel olarak test ediniz.
         ve content type'inin application/json; charset=utf-8, ve Server isimli Header'in degerinin cloudflare,
         ve status Line'in HTTP/1.1 200 OK olduğunu assert ediniz.
      */
+
+        // end point ve request body hazirla
+        String url="https://jsonplaceholder.typicode.com/posts/70";
+        JSONObject reqBody= new JSONObject();
+        reqBody.put( "title", "Ahmet");
+        reqBody.put("body", "Merhaba");
+        reqBody.put(  "userId", 10);
+        reqBody.put( "id", 70);
+
+        // Expected hazırla
+
+        //Request body gönder ve response' ı kaydet
+        Response response=given().contentType(ContentType.JSON).when().body(reqBody.toString()).put(url);
+        //response.prettyPrint();
+
+        //Assert
+        response.then().assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .header("Server","cloudflare")
+                .statusLine("HTTP/1.1 200 OK");
+
+
     }
 
     @Test
@@ -82,6 +139,24 @@ ve response suresinin 5 sn'den kisa oldugunu manuel olarak test ediniz.
         //   ve content type'inin application/json; charset=utf-8,
         //   ve response body'sinde bulunan userId'nin 5,
         //   ve response body'sinde bulunan title'in "optio dolor molestias sit" oldugunu test edin.
+
+        // end point ve request body
+        String url ="https://jsonplaceholder.typicode.com/posts/44";
+        // Expected data
+
+        //Request gönderip response'ı kaydetme
+        Response response= given().when().get(url);
+response.prettyPrint();
+        //Assert
+
+        response.then().assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("userId",
+                        equalTo(5),"title",equalTo("optio dolor molestias sit"));
+
+
+
     }
 
     @Test
@@ -101,6 +176,18 @@ https://jsonplaceholder.typicode.com/posts url'ine asagidaki body ile bir POST r
         "userId" degerinin 100'den kucuk oldugunu
         "body" nin "API" kelimesi icerdigini test edin.
  */
+        String url ="https://jsonplaceholder.typicode.com/posts";
+        JSONObject reqBody= new JSONObject();
+        reqBody.put("title","API");
+        reqBody.put("body","API ogrenmek ne guzel");
+        reqBody.put("userId",10);
+
+        Response response= given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);
+response.prettyPrint();
+        response.then().assertThat().statusCode(201).contentType(ContentType.JSON)
+                .body("title",equalTo("API"),"userId",lessThan(100),"body",containsString("API"));
+
+
     }
 
     @Test

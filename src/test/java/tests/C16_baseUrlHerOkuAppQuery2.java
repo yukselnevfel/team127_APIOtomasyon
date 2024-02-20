@@ -1,3 +1,5 @@
+package tests;
+
 import org.testng.annotations.Test;
 
 public class C16_baseUrlHerOkuAppQuery2 {

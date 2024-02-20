@@ -1,3 +1,5 @@
+package tests;
+
 public class odev {
      /*
        http://dummy.restapiexample.com/api/v1/update/21 url'ine
