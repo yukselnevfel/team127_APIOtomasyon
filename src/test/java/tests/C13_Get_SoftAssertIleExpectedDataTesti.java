@@ -48,15 +48,15 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         expBody.put("status", "success");
         expBody.put("data", data);
         expBody.put("message", "Successfully! Record has been fetched.");
-
+        //System.out.println(expBody.toString());
         //3-Request gönder/response kaydet
 
         Response response = given().when().get(url);
 
         //4-Assertion İşlemi
         JsonPath respJP = response.jsonPath(); //Gelen cevabı alıp JsonPath'e cast ediyoruz.
-        SoftAssert softAssert = new SoftAssert();
-
+        SoftAssert softAssert = new SoftAssert();// bunu kullanabilmek için test notasyonunu Test NG olarak güncellemek gerekir!
+        //TestNg de önce actual data verisi girilir!!!
         softAssert.assertEquals(respJP.get("status"), expBody.get("status"));
         softAssert.assertEquals(respJP.get("data.id"), expBody.getJSONObject("data").get("id"));
         softAssert.assertEquals(respJP.get("data.employee_name"), expBody.getJSONObject("data").get("employee_name"));
