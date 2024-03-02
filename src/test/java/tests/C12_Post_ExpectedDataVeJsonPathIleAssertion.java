@@ -88,7 +88,7 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         JsonPath respJP = response.jsonPath();
 
         // ilk yazilan expected ==>oluşturduğumuz JsonObject:expected Data
-        // ikinci yazilan==>response :respJP
+        // ikinci yazilan actual==>response :respJP
         assertEquals(expBody.getJSONObject("booking").get("firstname"), respJP.get("booking.firstname"));
         assertEquals(expBody.getJSONObject("booking").get("lastname"), respJP.get("booking.lastname"));
         assertEquals(expBody.getJSONObject("booking").get("totalprice"), respJP.get("booking.totalprice"));

@@ -17,9 +17,26 @@ public class C18_baseUrlJsonPlaceDelete extends BaseUrlJsonPlaceUrl {
 
     @Test
     public void test01(){
-        specJsonPlaceHolder.pathParams("pp1","posts","pp2","40");
-        Response response=given().when().spec(specJsonPlaceHolder).delete("{pp1]/{pp2}");
+        specJsonPlaceHolder.pathParams("pp1","posts","pp2","60");
+
+        Response response=given()
+                                .when().spec(specJsonPlaceHolder)
+                                .delete("{/pp1]/{pp2}");
+
 
         response.then().assertThat().statusCode(200).body("title", Matchers.nullValue());
     }
+
+    @Test
+    public void testDeneme(){
+        // end point ve request body boluştur.
+        specJsonPlaceHolder.pathParams("pp1","posts","pp2",55);
+        Response response= given().spec(specJsonPlaceHolder).when().delete("/{pp1}/{pp2}");
+
+        response.then().assertThat()
+                .statusCode(200)
+                .body("title",Matchers.nullValue());
+
+    }
 }
+

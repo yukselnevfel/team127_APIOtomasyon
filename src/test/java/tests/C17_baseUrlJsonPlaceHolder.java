@@ -17,9 +17,11 @@ public class C17_baseUrlJsonPlaceHolder extends BaseUrlJsonPlaceUrl {
     @Test
     public void test01(){
 
-        specJsonPlaceHolder.pathParams("pp1","posts","pp2","44");
+        specJsonPlaceHolder.pathParams("pp1","posts","pp2",44);
 
-        Response response=given().when().spec(specJsonPlaceHolder).get("{pp1}/{pp2}");
+        Response response=given().when().spec(specJsonPlaceHolder).get("/{pp1}/{pp2}");
+
+        response.prettyPrint();
 
         response.then().assertThat()
                 .statusCode(200)
@@ -37,7 +39,7 @@ public class C17_baseUrlJsonPlaceHolder extends BaseUrlJsonPlaceUrl {
 
         specJsonPlaceHolder.pathParam("pp1","posts");
 
-        Response response=given().when().spec(specJsonPlaceHolder).get("{pp1}");
+        Response response=given().when().spec(specJsonPlaceHolder).get("/{pp1}");
 
         //response.prettyPrint();
 

@@ -60,8 +60,8 @@ public class C11_Get_ExpectedDataOlusturma {
             //4-Assertion işlemi
 
         /*
-        Şimdiye kadar kullndığımız assertThat() metodu ile yapılan testlerdeki gibi assertion yapılabilir
-        Frameworkümüzü geliştirmek için dinamik bir yapı kazandırlabiliriz. Bunu için de HardAssert kullanabiliriz.
+        Şimdiye kadar kullndığımız assertThat() metodu ile yapılan testlerdeki gibi assertion yapılabilir Ancak
+        frameworkümüzü geliştirmek için dinamik bir yapı kazandırlabiliriz. Bunu için de HardAssert kullanabiliriz.
         Bunun için JUnit kullanacağız
          */
             JsonPath respJsonPath=response.jsonPath();

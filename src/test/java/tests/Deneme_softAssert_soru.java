@@ -17,23 +17,23 @@ Request Body
 {
 "status": "success",
 "data": {
-"name": “Ahmet",
-"salary": "1230",
-"age": "44",
-"id": 40
+   "name": “Ahmet",
+   "salary": "1230",
+   "age": "44",
+   "id": 40
 }
 }
 Response Body
 { "status": "success",
-"data": {
-"status": "success",
-"data": {
-"name": “Ahmet",
-"salary": "1230",
-"age": "44",
-"id": 40 }
+  "data": {
+    "status": "success",
+    "data": {
+     "name": “Ahmet",
+     "salary": "1230",
+     "age": "44",
+     "id": 40 }
 },
-"message": "Successfully! Record has been updated."
+  "message": "Successfully! Record has been updated."
      */
     @Test
     public void softAssertTesti(){

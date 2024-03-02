@@ -36,8 +36,8 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
 
         //1-Endpoint ve reqBody hazırlama
         String url = "http://dummy.restapiexample.com/api/v1/employee/3";
-        //2-ExpectedBody hazırlama
 
+        //2-ExpectedBody hazırlama
         JSONObject data = new JSONObject();
         data.put("id", 3);
         data.put("employee_name", "Ashton Cox");
@@ -48,9 +48,9 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         expBody.put("status", "success");
         expBody.put("data", data);
         expBody.put("message", "Successfully! Record has been fetched.");
-        //System.out.println(expBody.toString());
-        //3-Request gönder/response kaydet
+        // System.out.println(expBody.toString());
 
+        //3-Request gönder/response kaydet
         Response response = given().when().get(url);
 
         //4-Assertion İşlemi

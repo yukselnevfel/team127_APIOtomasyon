@@ -26,10 +26,12 @@ public class C14_baseUrlHerOkuApp extends BaseUrlHerOkuApp {
         //2-expBody hazırlama
 
         //3-response kaydet
-        Response response=given().when().spec(specHerOkuApp).get("/{pp1}");
+        Response response=given()
+                               .when().spec(specHerOkuApp)
+                               .get("/{pp1}");
 
-        //
-        response.then().assertThat().statusCode(200).body("bookingid", Matchers.hasItem(51));
+        response.prettyPrint();
+        response.then().assertThat().statusCode(200).body("bookingid", Matchers.hasItem(12));
 
 
     }
