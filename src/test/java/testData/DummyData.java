@@ -36,13 +36,27 @@ public class DummyData {
         expData.put(  "message","Successfully! Record has been fetched.");
         return expData;
     }
+    /*
+   {
+      "status":"success",
+      "data":{
+              "id":3,
+              "employee_name":"Ashton Cox",
+              "employee_salary":86000,
+              "employee_age":66,
+              "profile_image":""
+              },
+      "message":"Successfully! Record has been fetched."
+  }
+   */
     public static Map<String ,Object> mapBodyOlustur(){
         Map<String,Object> mapBody=new HashMap<>();
 
         Map<String,Object> dataBody=new HashMap<>();
         dataBody.put("employee_name","Ashton Cox");
-        dataBody.put("employee_salary",86000);
-        dataBody.put( "employee_age",66);
+        dataBody.put("employee_salary",86000.0);
+        dataBody.put( "employee_age",66.0);
+        dataBody.put("id",3.0);
         dataBody.put("profile_image","");
 
 
