@@ -3,12 +3,12 @@ package tests;
 import baseUrl.BaseUrlHerOkuApp;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class C16_baseUrlHerOkuAppQuery2 extends BaseUrlHerOkuApp {
-         /*
+            /*
             https://restful-booker.herokuapp.com/booking endpointine
             gerekli Query parametrelerini yazarak
                 “firstname” degeri “Jim”

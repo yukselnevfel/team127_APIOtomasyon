@@ -3,12 +3,12 @@ package tests;
 import baseUrl.BaseUrlHerOkuApp;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class C14_baseUrlHerOkuApp extends BaseUrlHerOkuApp {
-     /*
+    /*
         //1-  https://restful-booker.herokuapp.com/booking endpointine
     //    bir GET request gonderdigimizde
     //    donen response’un
@@ -26,17 +26,13 @@ public class C14_baseUrlHerOkuApp extends BaseUrlHerOkuApp {
         //2-expBody hazırlama
 
         //3-response kaydet
-        Response response=given()
-                               .when().spec(specHerOkuApp)
-                               .get("/{pp1}");
+        Response response=given().when().spec(specHerOkuApp).get("/{pp1}");
 
-        response.prettyPrint();
-        response.then().assertThat().statusCode(200).body("bookingid", Matchers.hasItem(12));
+        //
+        response.then().assertThat().statusCode(200).body("bookingid", Matchers.hasItems(4,5));
 
 
     }
 
 
-
 }
-

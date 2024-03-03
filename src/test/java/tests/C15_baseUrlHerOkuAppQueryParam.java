@@ -1,12 +1,13 @@
 package tests;
 
+import baseUrl.BaseUrlHerOkuApp;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class C15_baseUrlHerOkuAppQueryParam extends C14_baseUrlHerOkuApp{
+public class C15_baseUrlHerOkuAppQueryParam extends BaseUrlHerOkuApp {
         /*
 
         "https://restful-booker.herokuapp.com/booking endpointine
@@ -28,13 +29,11 @@ public class C15_baseUrlHerOkuAppQueryParam extends C14_baseUrlHerOkuApp{
         //response.prettyPrint();
 
 
-        response.then().assertThat().statusCode(200).body("bookingid", Matchers.hasItem(305));
+        response.then().assertThat().statusCode(200).body("bookingid",Matchers.hasItem(7));
 
 
 
     }
 
 
-
 }
-

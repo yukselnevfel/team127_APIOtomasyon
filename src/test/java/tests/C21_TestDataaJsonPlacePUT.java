@@ -38,16 +38,20 @@ public class C21_TestDataaJsonPlacePUT extends BaseUrlJsonPlaceUrl {
 
     @Test
     public void test01() {
+        //1.adım
         specJsonPlaceHolder.pathParams("pp1", "posts", "pp2", "70");
 
         JSONObject reqBody = JsonPlaceDatas.JSonDataOlustur(10, 70, "Ahmet", "Merhaba");
 
+        //2.adım
         JSONObject expBody = JsonPlaceDatas.JSonDataOlustur(10, 70, "Ahmet", "Merhaba");
 
+        //3. adım
         Response response = given().contentType(ContentType.JSON)
                 .when().spec(specJsonPlaceHolder).body(reqBody.toString())
                 .put("{pp1}/{pp2}");
 
+        //4.adım
         JsonPath resJP = response.jsonPath();
 
         assertEquals(JsonPlaceDatas.basariliSC, response.getStatusCode());
