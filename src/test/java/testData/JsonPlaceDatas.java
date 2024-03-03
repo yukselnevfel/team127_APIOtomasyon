@@ -2,8 +2,10 @@ package testData;
 
 import org.json.JSONObject;
 
-public class JsonPlaceDatas {
+import java.util.HashMap;
+import java.util.Map;
 
+public class JsonPlaceDatas {
     public static int basariliSC=200;
     public static String contentType="application/json; charset=utf-8";
     public static  String header="keep-alive";
@@ -30,5 +32,30 @@ public class JsonPlaceDatas {
 
     }
 
-}
+        /*
+        {
+            "title":"Ahmet",
+            "body":"Merhaba",
+            "userId":10,
+            "id":70
+        }
+         */
 
+
+
+    public static Map<String,Object> bodyOlusturMap(){
+
+        Map<String,Object> bodyMap=new HashMap<>();
+        bodyMap.put("title","Ahmet");
+        bodyMap.put("body","Merhaba");
+        bodyMap.put("userId",10.0);
+        bodyMap.put("id",70.0);
+
+
+        return bodyMap;
+    }
+
+
+
+
+}
