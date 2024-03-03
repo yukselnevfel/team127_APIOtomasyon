@@ -5,7 +5,8 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import testData.HerOkuAppDatas;
 import testData.JsonPlaceDatas;
 
@@ -13,7 +14,8 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
 public class C22_TestDataHerOkuAppPost extends BaseUrlHerOkuApp {
-      /*
+
+    /*
                 https://restful-booker.herokuapp.com/booking url’ine
                 asagidaki body'ye sahip bir POST request gonderdigimizde
                 donen response’un bookingid haric asagidaki gibi oldugunu test edin.
@@ -47,14 +49,13 @@ public class C22_TestDataHerOkuAppPost extends BaseUrlHerOkuApp {
          */
 
     @Test
-    public void test01() {
-        specHerOkuApp.pathParam("pp1", "booking");
-        JSONObject reqBody = HerOkuAppDatas.JsonReqBodOlustur();
-        JSONObject expBody = HerOkuAppDatas.JsonexpBodyOlustur();
+    public void test01(){
+        specHerOkuApp.pathParam("pp1","booking");
+        JSONObject reqBody= HerOkuAppDatas.JsonReqBodOlustur();
+        JSONObject expBody= HerOkuAppDatas.JsonexpBodyOlustur();
 
         Response response=given().contentType(ContentType.JSON).when().spec(specHerOkuApp)
                 .body(reqBody.toString()).post("{pp1}");
-
 
         /*
         "booking":{
@@ -72,17 +73,23 @@ public class C22_TestDataHerOkuAppPost extends BaseUrlHerOkuApp {
 
 
          */
-        JsonPath resJP = response.jsonPath();
+        JsonPath resJP=response.jsonPath();
 
-        assertEquals(expBody.getJSONObject("booking").get("firstname"), resJP.get("booking.firstname"));
-        assertEquals(expBody.getJSONObject("booking").get("lastname"), resJP.get("booking.lastname"));
-        assertEquals(expBody.getJSONObject("booking").get("totalprice"), resJP.get("booking.totalprice"));
-        assertEquals(expBody.getJSONObject("booking").get("depositpaid"), resJP.get("booking.depositpaid"));
-        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"), resJP.get("booking.bookingdates.checkin"));
-        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"), resJP.get("booking.bookingdates.checkout"));
-        assertEquals(expBody.getJSONObject("booking").get("additionalneeds"), resJP.get("booking.additionalneeds"));
+        assertEquals(expBody.getJSONObject("booking").get("firstname"),resJP.get("booking.firstname"));
+        assertEquals(expBody.getJSONObject("booking").get("lastname"),resJP.get("booking.lastname"));
+        assertEquals(expBody.getJSONObject("booking").get("totalprice"),resJP.get("booking.totalprice"));
+        assertEquals(expBody.getJSONObject("booking").get("depositpaid"),resJP.get("booking.depositpaid"));
+        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"),resJP.get("booking.bookingdates.checkin"));
+        assertEquals(expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"),resJP.get("booking.bookingdates.checkout"));
+        assertEquals(expBody.getJSONObject("booking").get("additionalneeds"),resJP.get("booking.additionalneeds"));
+
+
+
+
 
 
     }
+
+
 
 }
