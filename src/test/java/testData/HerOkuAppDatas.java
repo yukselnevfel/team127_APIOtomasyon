@@ -69,7 +69,7 @@ public class HerOkuAppDatas {
     public static Map<String,Object> reqBodyOlustur(){
 
         Map<String,Object> reqBodyMap=new HashMap<>();
-        Map<String,Object> bookingdatesBodyMap=new HashMap<>();
+        Map<String,String> bookingdatesBodyMap=new HashMap<>();
         bookingdatesBodyMap.put("checkin" , "2021-06-01");
         bookingdatesBodyMap.put("checkout" , "2021-06-10");
 

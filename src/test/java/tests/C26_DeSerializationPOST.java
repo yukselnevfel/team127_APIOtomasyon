@@ -47,16 +47,17 @@ public class C26_DeSerializationPOST extends BaseUrlHerOkuApp {
          */
     @Test
     public void test01(){
-
+        //1.adım Endpoint
         specHerOkuApp.pathParam("pp1","booking");
-
         Map<String,Object> reqBody = HerOkuAppDatas.reqBodyOlustur();
+        //2.adım Expected Data olustur
         Map<String,Object> expBody = HerOkuAppDatas.expBodyOlustur();
 
+        //3.adım
         Response response=given().spec(specHerOkuApp).contentType(ContentType.JSON)
                                  .when().body(reqBody)
                                  .post("{pp1}");
-
+        //4. adım
         Map<String,Object> resMAP=response.as(HashMap.class);
 
 
